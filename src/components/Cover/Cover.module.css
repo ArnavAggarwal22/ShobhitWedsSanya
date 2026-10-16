@@ -1,0 +1,45 @@
+/* Cover.module.css */
+.cover {
+  min-height: 100vh;
+  background: url('/assets/cover_bg_2.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #fff;
+}
+
+.cover-frame {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 2rem 3rem;
+  border: 4px solid #D4AF37;
+  border-radius: 12px;
+}
+
+.title {
+  font-family: 'Cinzel', serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  font-family: 'Great Vibes', cursive;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.open-btn {
+  background: #D4AF37;
+  color: #1A0310;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.open-btn:hover {
+  transform: scale(1.05);
+}

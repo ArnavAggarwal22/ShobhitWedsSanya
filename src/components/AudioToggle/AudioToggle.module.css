@@ -1,0 +1,27 @@
+/* AudioToggle.module.css */
+.audio-toggle {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  background: rgba(212, 175, 55, 0.9);
+  color: #1A0310;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Cinzel', serif;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
+.icon.playing {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}

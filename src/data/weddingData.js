@@ -85,3 +85,6 @@ export const GALLERY_IMAGES = [
 ];
 
 export const MAP_EMBED_URL = 'https://www.google.com/maps/embed?...';
+
+export const VENUE = 'Crowne Plaza, Sector 29, Gurugram';
+export const VENUE_FULL = 'Crowne Plaza, Sector 29, Gurugram, Haryana, India';

@@ -1,0 +1,70 @@
+/* Story.module.css */
+.story-section {
+  padding: 4rem 2rem;
+  background: var(--plum-dark);
+  color: var(--ivory);
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--gold);
+}
+
+.story-content {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.narrative {
+  font-family: 'Lato', sans-serif;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.couple-img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  border: 3px solid var(--gold);
+}
+
+.timeline {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.timeline-item {
+  background: rgba(212, 175, 55, 0.1);
+  border-left: 4px solid var(--gold);
+  margin: 1rem 0;
+  padding: 1rem;
+  position: relative;
+}
+
+.timeline-item .icon {
+  position: absolute;
+  left: -2rem;
+  top: 1rem;
+  font-size: 1.5rem;
+  color: var(--gold);
+}
+
+.timeline-item h3 {
+  font-family: 'Cinzel', serif;
+  margin-bottom: 0.5rem;
+  color: var(--gold);
+}
+
+.timeline-item p {
+  font-family: 'Lato', sans-serif;
+  margin: 0;
+}

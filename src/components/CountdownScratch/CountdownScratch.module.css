@@ -1,0 +1,49 @@
+/* CountdownScratch.module.css */
+.countdown-section {
+  padding: 4rem 2rem;
+  background: var(--plum-mid);
+  color: var(--ivory);
+  text-align: center;
+}
+
+.timer-cards {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.card {
+  background: var(--gold-dim);
+  padding: 1rem;
+  border-radius: 8px;
+  min-width: 4rem;
+}
+
+.card span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: block;
+}
+
+.scratch-card {
+  position: relative;
+  display: inline-block;
+}
+
+.scratch-canvas {
+  width: 300px;
+  height: 200px;
+  border: 2px solid var(--gold);
+  cursor: crosshair;
+}
+
+.save-btn, .calendar-btn {
+  margin: 0.5rem;
+  padding: 0.6rem 1rem;
+  background: var(--gold);
+  border: none;
+  color: var(--plum-dark);
+  border-radius: 4px;
+  cursor: pointer;
+}
