@@ -1,109 +1,96 @@
-import { useState } from 'react';
-import useScrollReveal from '../../hooks/useScrollReveal';
+import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { GALLERY_IMAGES } from '../../data/weddingData';
 import styles from './Gallery.module.css';
 
-export default function Gallery() {
-  const headerRef = useScrollReveal();
-  const gridRef = useScrollReveal();
-  const [lightboxIndex, setLightboxIndex] = useState(null);
+function Gallery() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
 
-  const openLightbox = (index) => setLightboxIndex(index);
+  function openLightbox(index) {
+    setActiveIndex(index);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden';
+  }
 
-  const closeLightbox = () => setLightboxIndex(null);
+  function closeLightbox() {
+    setLightboxOpen(false);
+    document.body.style.overflow = '';
+  }
 
-  const goPrev = () => {
-    setLightboxIndex((lightboxIndex - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length);
-  };
+  function goNext() {
+    setActiveIndex(function (prev) {
+      return (prev + 1) % GALLERY_IMAGES.length;
+    });
+  }
 
-  const goNext = () => {
-    setLightboxIndex((lightboxIndex + 1) % GALLERY_IMAGES.length);
-  };
+  function goPrev() {
+    setActiveIndex(function (prev) {
+      return (prev - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length;
+    });
+  }
 
-  const handleKeyDown = (e) => {
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') goPrev();
-    if (e.key === 'ArrowRight') goNext();
-  };
+  function handleOverlayClick(e) {
+    if (e.target === e.currentTarget) {
+      closeLightbox();
+    }
+  }
 
-  const galleryItems = [];
+  const gridItems = [];
   for (let i = 0; i < GALLERY_IMAGES.length; i++) {
     const img = GALLERY_IMAGES[i];
-    galleryItems.push(
-      <button
+    gridItems.push(
+      <motion.button
         key={i}
-        className={styles.item}
-        onClick={() => openLightbox(i)}
-        aria-label={`Open photo ${i + 1}`}
+        type="button"
+        className={styles.gridItem}
+        aria-label={`Open photo: ${img.alt}`}
+        onClick={function () { openLightbox(i); }}
+        whileHover={{ y: -5, scale: 1.025 }}
+        whileTap={{ scale: 0.98 }}
+        transition={{ type: 'spring', stiffness: 280, damping: 20 }}
       >
         <img src={img.src} alt={img.alt} loading="lazy" />
-        <div className={styles.itemOverlay}>
-          <span className={styles.zoomIcon}>⊕</span>
-        </div>
-      </button>
+      </motion.button>
     );
   }
 
   return (
-    <section id="gallery" className={styles.section}>
-      <div className={styles.sectionHeader} ref={headerRef}>
-        <p className={styles.eyebrow}>Moments We Cherish</p>
-        <h2 className={styles.sectionTitle}>Our Story in Frames</h2>
-        <div className={styles.divider}>
-          <span className={styles.line} />
-          <span className={styles.ornament}>✦</span>
-          <span className={styles.line} />
-        </div>
+    <section className={styles.section} id="gallery">
+      <h2 className={styles.sectionTitle}>Our Moments</h2>
+      <p className={styles.sectionSubtitle}>A glimpse of our journey together</p>
+      <div className={styles.grid}>
+        {gridItems}
       </div>
 
-      <div className={styles.masonry} ref={gridRef}>
-        {galleryItems}
-      </div>
-
-      {lightboxIndex !== null && (
-        <div
-          className={styles.lightbox}
-          role="dialog"
-          aria-modal="true"
-          onClick={closeLightbox}
-          onKeyDown={handleKeyDown}
-          tabIndex={-1}
+      <motion.div
+        className={`${styles.lightbox} ${lightboxOpen ? styles.open : ''}`}
+        initial={false}
+        animate={{ opacity: lightboxOpen ? 1 : 0 }}
+        transition={{ duration: 0.24 }}
+        onClick={handleOverlayClick}
+      >
+        <motion.div
+          className={styles.lightboxContent}
+          initial={{ scale: 0.94, y: 14 }}
+          animate={{ scale: lightboxOpen ? 1 : 0.94, y: lightboxOpen ? 0 : 14 }}
+          transition={{ type: 'spring', stiffness: 240, damping: 24 }}
         >
-          <button
-            className={styles.lbClose}
-            onClick={closeLightbox}
-            aria-label="Close lightbox"
-          >
-            ✕
-          </button>
-          <button
-            className={`${styles.lbNav} ${styles.lbPrev}`}
-            onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            aria-label="Previous photo"
-          >
-            ‹
-          </button>
-          <div
-            className={styles.lbContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <img
-              src={GALLERY_IMAGES[lightboxIndex].src}
-              alt={GALLERY_IMAGES[lightboxIndex].alt}
-            />
-          </div>
-          <button
-            className={`${styles.lbNav} ${styles.lbNext}`}
-            onClick={(e) => { e.stopPropagation(); goNext(); }}
-            aria-label="Next photo"
-          >
-            ›
-          </button>
-          <div className={styles.lbCounter}>
-            {lightboxIndex + 1} / {GALLERY_IMAGES.length}
-          </div>
-        </div>
-      )}
+          <button className={styles.lightboxClose} onClick={closeLightbox}>✕</button>
+          <button className={`${styles.lightboxNav} ${styles.prev}`} onClick={goPrev}>‹</button>
+          <motion.img
+            key={activeIndex}
+            src={GALLERY_IMAGES[activeIndex].src}
+            alt={GALLERY_IMAGES[activeIndex].alt}
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3 }}
+          />
+          <button className={`${styles.lightboxNav} ${styles.next}`} onClick={goNext}>›</button>
+        </motion.div>
+      </motion.div>
     </section>
   );
 }
+
+export default Gallery;

@@ -1,29 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import '../../index.css';
-import './AudioToggle.module.css';
+import React, { useState } from 'react';
+import styles from './AudioToggle.module.css';
 
 function AudioToggle({ audioRef }) {
   const [playing, setPlaying] = useState(false);
-  const toggle = () => {
+
+  async function toggle() {
     if (!audioRef.current) return;
     if (playing) {
       audioRef.current.pause();
+      setPlaying(false);
     } else {
-      audioRef.current.play();
+      try {
+        await audioRef.current.play();
+        setPlaying(true);
+      } catch {
+        setPlaying(false);
+      }
     }
-    setPlaying(!playing);
-  };
-  useEffect(() => {
-    const icon = document.getElementById('audio-toggle');
-    if (icon) icon.addEventListener('click', toggle);
-    return () => {
-      if (icon) icon.removeEventListener('click', toggle);
-    };
-  }, [audioRef, playing]);
+  }
+
   return (
-    <div id="audio-toggle" className="audio-toggle">
-      <span className={playing ? 'icon playing' : 'icon'}>♪</span>
-    </div>
+    <button
+      id="audio-toggle"
+      className={styles.audioToggle}
+      onClick={toggle}
+      type="button"
+      aria-label={playing ? 'Turn music off' : 'Turn music on'}
+      aria-pressed={playing}
+    >
+      <span className={playing ? styles.iconPlaying : styles.icon} aria-hidden="true">♪</span>
+    </button>
   );
 }
 

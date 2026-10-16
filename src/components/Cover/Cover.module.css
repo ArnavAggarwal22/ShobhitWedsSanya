@@ -1,45 +1,240 @@
-/* Cover.module.css */
-.cover {
-  min-height: 100vh;
-  background: url('/assets/cover_bg_2.jpg') center/cover no-repeat;
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
-  color: #fff;
+  overflow-y: auto;
+  padding: 24px 16px;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(145, 34, 44, 0.4), transparent 42%),
+    radial-gradient(ellipse at 50% 100%, rgba(212, 175, 55, 0.09), transparent 44%),
+    repeating-linear-gradient(135deg, rgba(255, 248, 240, 0.012) 0 1px, transparent 1px 7px),
+    linear-gradient(160deg, #300006 0%, #5C0612 46%, #360007 100%);
+  transition: opacity 0.8s ease, visibility 0.8s ease;
 }
 
-.cover-frame {
+.overlay::before,
+.overlay::after {
+  position: fixed;
+  inset: 18px;
+  border: 1px solid rgba(212, 175, 55, 0.23);
+  content: '';
+  pointer-events: none;
+}
+
+.overlay::after {
+  inset: 25px;
+  border-color: rgba(212, 175, 55, 0.1);
+}
+
+.overlay.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.card {
+  width: min(100%, 540px);
+  max-height: calc(100svh - 36px);
+  overflow-y: auto;
   text-align: center;
-  background: rgba(0, 0, 0, 0.6);
-  padding: 2rem 3rem;
-  border: 4px solid #D4AF37;
-  border-radius: 12px;
+  padding: clamp(24px, 4.5vh, 42px) clamp(20px, 6vw, 58px) 32px;
+  border: 1px solid rgba(232, 197, 71, 0.76);
+  border-radius: 280px 280px 18px 18px;
+  background: linear-gradient(180deg, rgba(117, 12, 27, 0.92), rgba(48, 0, 6, 0.97) 78%), var(--maroon-deep);
+  box-shadow: 0 30px 110px rgba(0, 0, 0, 0.42), 0 0 60px rgba(212, 175, 55, 0.1), inset 0 0 0 7px rgba(212, 175, 55, 0.045);
+  position: relative;
+  perspective: 1000px;
 }
 
-.title {
-  font-family: 'Cinzel', serif;
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-.subtitle {
+.mantra {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(12px, 2.5vw, 15px);
+  color: #f2d982;
+  letter-spacing: 1.5px;
+  margin-bottom: 14px;
+  text-shadow: 0 0 18px rgba(232, 197, 71, 0.3);
+}
+
+.coupleNames {
   font-family: 'Great Vibes', cursive;
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
+  font-size: clamp(46px, 8vw, 64px);
+  color: var(--gold-bright);
+  line-height: 0.88;
+  margin-bottom: 12px;
+  text-shadow: 0 3px 26px rgba(212, 175, 55, 0.38);
 }
 
-.open-btn {
-  background: #D4AF37;
-  color: #1A0310;
+.ampersand {
+  font-family: 'Great Vibes', cursive;
+  font-size: 30px;
+  color: var(--gold);
+  display: block;
+  margin: 8px 0;
+}
+
+.tagline {
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(255, 248, 240, 0.76);
+  margin-top: 16px;
+  margin-bottom: 22px;
+}
+
+.openBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 230px;
+  min-height: 52px;
+  padding: 14px 24px;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-bright));
+  color: var(--maroon-deep);
+  font-family: 'Cinzel', serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
   border: none;
-  padding: 0.8rem 1.5rem;
-  font-size: 1rem;
+  border-radius: 3px;
   cursor: pointer;
-  border-radius: 6px;
-  transition: transform 0.2s;
+  box-shadow: 0 7px 24px rgba(212, 175, 55, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  animation: invitationGlow 2.8s ease-in-out 4s infinite;
 }
 
-.open-btn:hover {
-  transform: scale(1.05);
+@keyframes invitationGlow {
+  0%, 100% { box-shadow: 0 7px 24px rgba(212, 175, 55, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+  50% { box-shadow: 0 7px 34px rgba(232, 197, 71, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+}
+
+.openBtn:focus-visible {
+  outline: 2px solid var(--ivory);
+  outline-offset: 4px;
+}
+
+.openBtn:disabled {
+  cursor: wait;
+  filter: saturate(0.76);
+}
+
+.openArrow {
+  font-size: 18px;
+  line-height: 1;
+  transition: transform 200ms ease;
+}
+
+.openBtn:hover .openArrow {
+  transform: translate(2px, -2px);
+}
+
+.tapHint {
+  display: block;
+  margin-top: 16px;
+  color: var(--ivory-dim);
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.cornerDecor {
+  position: absolute;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border-color: var(--gold);
+  opacity: 0.55;
+}
+
+.cornerDecor.topLeft {
+  top: 12px;
+  left: 12px;
+  border-top: 2px solid;
+  border-left: 2px solid;
+  border-top-left-radius: 12px;
+}
+
+.cornerDecor.topRight {
+  top: 12px;
+  right: 12px;
+  border-top: 2px solid;
+  border-right: 2px solid;
+  border-top-right-radius: 12px;
+}
+
+.cornerDecor.bottomLeft {
+  bottom: 12px;
+  left: 12px;
+  border-bottom: 2px solid;
+  border-left: 2px solid;
+  border-bottom-left-radius: 12px;
+}
+
+.cornerDecor.bottomRight {
+  bottom: 12px;
+  right: 12px;
+  border-bottom: 2px solid;
+  border-right: 2px solid;
+  border-bottom-right-radius: 12px;
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+  animation: sparkle 3s ease-in-out infinite;
+}
+
+@media (max-width: 520px) {
+  .overlay {
+    padding: 18px 13px;
+  }
+
+  .overlay::before {
+    inset: 9px;
+  }
+
+  .overlay::after {
+    inset: 15px;
+  }
+
+  .card {
+    border-radius: 180px 180px 14px 14px;
+  }
+
+  .openBtn {
+    width: 100%;
+    min-width: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .particle {
+    animation: none;
+  }
 }

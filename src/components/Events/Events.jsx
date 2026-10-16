@@ -1,51 +1,63 @@
-import useScrollReveal from '../../hooks/useScrollReveal';
-import { EVENTS, VENUE } from '../../data/weddingData';
+import React from 'react';
+import { motion } from 'motion/react';
+import { EVENTS, VENUE_MAP_URL } from '../../data/weddingData';
 import styles from './Events.module.css';
 
-export default function Events() {
-  const headerRef = useScrollReveal();
-  const gridRef = useScrollReveal();
-
+function Events() {
   const cards = [];
   for (let i = 0; i < EVENTS.length; i++) {
-    const ev = EVENTS[i];
+    const evt = EVENTS[i];
     cards.push(
-      <div key={ev.id} className={styles.card} style={{ '--accent': ev.color }}>
-        <div className={styles.cardTopBar} />
-        <div className={styles.cardIcon}>{ev.icon}</div>
-        <div className={styles.cardNumber}>0{i + 1}</div>
-        <h3 className={styles.cardTitle}>{ev.name}</h3>
-        <p className={styles.cardTagline}>{ev.tagline}</p>
-        <div className={styles.cardDivider} />
-        <div className={styles.cardMeta}>
-          <span className={styles.cardDate}>{ev.date}</span>
-          <span className={styles.cardDot}>·</span>
-          <span className={styles.cardTime}>{ev.time}</span>
+      <motion.article
+        key={evt.id}
+        className={styles.eventCard}
+        whileHover={{ y: -6, boxShadow: '0 18px 38px rgba(92, 6, 18, 0.16)' }}
+        whileTap={{ scale: 0.99 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 22 }}
+      >
+        <div className={styles.eventHeader}>
+          <span className={styles.eventIcon}>{evt.icon}</span>
+          <h3 className={styles.eventName}>{evt.name}</h3>
         </div>
-        <div className={styles.cardVenue}>
-          <span className={styles.pinIcon}>📍</span>
-          {VENUE}
+        <div className={styles.eventBody}>
+          <p className={styles.eventSubtitle}>{evt.subtitle}</p>
+          <div className={styles.eventDetail}>
+            <span className={styles.eventDetailIcon}>📅</span>
+            <span className={styles.eventDetailText}>{evt.date}</span>
+          </div>
+          <div className={styles.eventDetail}>
+            <span className={styles.eventDetailIcon}>🕐</span>
+            <span className={styles.eventDetailText}>{evt.time}</span>
+          </div>
+          <div className={styles.eventDetail}>
+            <span className={styles.eventDetailIcon}>📍</span>
+            <span className={styles.eventDetailText}>{evt.venue}</span>
+          </div>
+          {evt.dressCode ? (
+            <div className={styles.dressCode}>{evt.dressCode}</div>
+          ) : null}
+          <a
+            className={styles.mapLink}
+            href={VENUE_MAP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Location on Google Maps
+          </a>
         </div>
-        <div className={styles.cardGlow} />
-      </div>
+      </motion.article>
     );
   }
 
   return (
-    <section id="events" className={styles.section}>
-      <div className={styles.bgPattern} />
-      <div className={styles.sectionHeader} ref={headerRef}>
-        <p className={styles.eyebrow}>Join Us For</p>
-        <h2 className={styles.sectionTitle}>The Celebrations</h2>
-        <div className={styles.divider}>
-          <span className={styles.line} />
-          <span className={styles.ornament}>✦</span>
-          <span className={styles.line} />
-        </div>
-      </div>
-      <div className={styles.grid} ref={gridRef}>
+    <section className={styles.section} id="events">
+      <h2 className={styles.sectionTitle}>Wedding Events</h2>
+      <p className={styles.sectionSubtitle}>Join us for the celebrations</p>
+      <div className={styles.eventsGrid}>
         {cards}
       </div>
     </section>
   );
 }
+
+export default Events;

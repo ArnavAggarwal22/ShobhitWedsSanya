@@ -1,22 +1,37 @@
-/* AudioToggle.module.css */
-.audio-toggle {
+.audioToggle {
   position: fixed;
-  bottom: 1rem;
-  left: 1rem;
-  background: rgba(212, 175, 55, 0.9);
-  color: #1A0310;
-  padding: 0.5rem 0.8rem;
-  border-radius: 4px;
+  z-index: 10001;
+  right: max(1rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--gold-bright);
+  border-radius: 50%;
+  background: var(--maroon-deep);
+  color: var(--gold-bright);
   cursor: pointer;
-  font-family: 'Cinzel', serif;
-  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+  box-shadow: 0 4px 18px rgba(61, 0, 7, 0.3);
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.audioToggle:hover {
+  background: var(--maroon);
+  transform: translateY(-2px);
+}
+
+.audioToggle:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 3px;
 }
 
 .icon {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
 }
 
-.icon.playing {
+.iconPlaying {
+  font-size: 1.35rem;
   animation: pulse 2s infinite;
 }
 

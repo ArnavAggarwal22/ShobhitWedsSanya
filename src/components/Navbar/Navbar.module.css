@@ -133,3 +133,235 @@
     font-size: 1rem;
   }
 }
+
+.progress {
+  position: fixed;
+  z-index: 1002;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #c59b27, #fff0aa, #d4af37);
+  transform-origin: 0 50%;
+  box-shadow: 0 0 12px rgba(232, 197, 71, 0.65);
+}
+
+.backdrop {
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(18, 0, 4, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.navbar {
+  top: 14px;
+  left: 50%;
+  width: min(calc(100% - 36px), 1100px);
+  min-height: 58px;
+  padding: 0 24px;
+  border: 1px solid rgba(232, 197, 71, 0.25);
+  border-radius: 4px;
+  background: rgba(48, 0, 6, 0.62);
+  color: var(--ivory);
+  box-shadow: 0 10px 34px rgba(24, 0, 4, 0.2);
+  transform: translateX(-50%);
+}
+
+.navbar.scrolled {
+  border-color: rgba(232, 197, 71, 0.4);
+  background: rgba(48, 0, 6, 0.88);
+}
+
+.logo {
+  color: var(--gold-bright);
+  font-size: 29px;
+  line-height: 1;
+}
+
+.logo span {
+  padding: 0 2px;
+  color: var(--ivory-dim);
+  font-family: 'Playfair Display', serif;
+  font-size: 13px;
+  font-style: italic;
+}
+
+.navLinks {
+  gap: clamp(14px, 2.2vw, 32px);
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: rgba(255, 248, 240, 0.78);
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 1.2px;
+}
+
+.navLink::after {
+  right: 0;
+  bottom: 8px;
+  left: 0;
+  width: auto;
+  height: 1px;
+  background: var(--gold-bright);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 220ms ease;
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--gold-bright);
+}
+
+.navLink:hover::after,
+.navLink.active::after {
+  width: auto;
+  transform: scaleX(1);
+}
+
+.shareButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 0 13px;
+  border: 1px solid rgba(232, 197, 71, 0.5);
+  border-radius: 3px;
+  background: rgba(212, 175, 55, 0.08);
+  color: var(--gold-bright);
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.shareButton:hover {
+  background: var(--gold-bright);
+  color: var(--maroon-deep);
+}
+
+.shareButton svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+.shareStatus {
+  position: fixed;
+  z-index: 1001;
+  top: 82px;
+  left: 50%;
+  color: var(--ivory);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+.hamburger {
+  width: 42px;
+  height: 42px;
+  padding: 11px;
+  border: 1px solid rgba(232, 197, 71, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 248, 240, 0.04);
+}
+
+.hamburger span {
+  width: 18px;
+  height: 1px;
+  margin: 4px 0;
+  background: var(--gold-bright);
+}
+
+.hamburger.active span:first-child {
+  transform: translateY(5px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:last-child {
+  transform: translateY(-5px) rotate(-45deg);
+}
+
+@media (max-width: 820px) {
+  .navbar {
+    top: 10px;
+    width: calc(100% - 24px);
+    min-height: 54px;
+    padding: 0 14px;
+  }
+
+  .hamburger {
+    position: relative;
+    z-index: 2;
+    display: block;
+  }
+
+  .navLinks {
+    position: fixed;
+    top: -10px;
+    right: -12px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    gap: 8px;
+    width: min(78vw, 330px);
+    height: 100svh;
+    padding: 76px 28px 32px;
+    border-left: 1px solid rgba(232, 197, 71, 0.28);
+    background: rgba(48, 0, 6, 0.97);
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.28);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(110%);
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease, visibility 0s linear 350ms;
+  }
+
+  .navLinks.open {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 350ms cubic-bezier(0.22, 1, 0.36, 1), opacity 220ms ease, visibility 0s;
+  }
+
+  .navLink {
+    min-height: 54px;
+    font-size: 12px;
+  }
+
+  .shareButton {
+    width: 100%;
+    min-height: 46px;
+    justify-content: flex-start;
+    padding: 0 13px;
+  }
+
+  .shareStatus {
+    top: 72px;
+    width: calc(100% - 28px);
+    text-align: center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navLink,
+  .navLink::after,
+  .navLinks,
+  .hamburger span {
+    transition-duration: 0.01ms;
+  }
+}

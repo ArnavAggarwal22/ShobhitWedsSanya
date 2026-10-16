@@ -16,7 +16,8 @@ export default function Footer() {
       </div>
       <h2 className={styles.names}>Sanya &amp; Shobhit</h2>
       <p className={styles.date}>25th &amp; 26th November 2026</p>
-      <p className={styles.tagline}>Forever begins here.</p>
+      <p className={styles.tagline}>We can't wait to celebrate with you!</p>
+      <p className={styles.families}>With love, Aggarwal &amp; Garg Families</p>
       <a href="#hero" className={styles.backToTop} onClick={handleScroll} aria-label="Back to top">
         ↑
       </a>

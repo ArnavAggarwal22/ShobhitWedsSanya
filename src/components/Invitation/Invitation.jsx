@@ -1,79 +1,49 @@
-import useScrollReveal from '../../hooks/useScrollReveal';
+import React from 'react';
+import { COUPLE, GRANDPARENTS } from '../../data/weddingData';
 import styles from './Invitation.module.css';
 
-export default function Invitation() {
-  const sectionRef = useScrollReveal();
-  const portraitsRef = useScrollReveal();
-  const textRef = useScrollReveal();
+function Invitation() {
+  const motifElements = [];
+  for (let i = 0; i < 5; i++) {
+    motifElements.push(<span key={i} className={styles.motif}></span>);
+  }
 
   return (
-    <section id="invitation" className={styles.section}>
-      <div className={styles.sectionHeader} ref={sectionRef}>
-        <p className={styles.eyebrow}>With Joyful Hearts</p>
-        <h2 className={styles.sectionTitle}>The Invitation</h2>
-        <div className={styles.divider}>
-          <span className={styles.line} />
-          <span className={styles.ornament}>✦</span>
-          <span className={styles.line} />
+    <section className={styles.section} id="invitation">
+      <div className={styles.card}>
+        <div className={styles.archTop}></div>
+        <div className={styles.hangingMotifs}>
+          {motifElements}
         </div>
-      </div>
-
-      <div className={styles.portraits} ref={portraitsRef}>
-        <div className={styles.portraitCard}>
-          <div className={styles.portraitFrame}>
-            <img
-              src="/assets/9e7dbaa4-f976-4bac-b54e-cf1a4f835c7a.jpg"
-              alt="Sanya — The Bride"
-            />
-            <div className={styles.frameRing} />
-          </div>
-          <div className={styles.portraitLabel}>
-            <p className={styles.role}>The Bride</p>
-            <h3 className={styles.personName}>Sanya</h3>
-            <p className={styles.family}>Aggarwal Family</p>
-          </div>
+        <div className={styles.body}>
+          <svg className={styles.ganeshaIcon} viewBox="0 0 64 64" role="img" aria-label="Lord Ganesha">
+            <path d="M20 17c0-7 5-12 12-12s12 5 12 12v5c6 3 10 9 10 16 0 9-7 16-16 16h-4v5H22v-8c-8-3-13-10-13-18 0-7 4-13 11-16v-5Zm5 8c-5 2-8 6-8 11 0 7 6 12 13 12h8c5 0 9-4 9-9s-4-9-9-9h-4c-3 0-5-2-5-5v-7c-3 0-4 2-4 7Zm16-3c3 1 6 3 8 6-1-6-4-10-8-12v6Zm-14 32h9v-4h-9v4Z" fill="currentColor" />
+            <circle cx="27" cy="22" r="1.5" fill="var(--maroon)" />
+            <circle cx="39" cy="22" r="1.5" fill="var(--maroon)" />
+          </svg>
+          <p className={styles.mantra}>|| ॐ श्री गणेशाय नमः ||</p>
+          <p className={styles.shloka}>
+            वक्रतुण्ड महाकाय सूर्यकोटि समप्रभ।<br />
+            निर्विघ्नं कुरु मे देव सर्वकार्येषु सर्वदा॥
+          </p>
+          <div className={styles.goldDivider}></div>
+          <p className={styles.hosts}>
+            {GRANDPARENTS.grandmother}<br />& {GRANDPARENTS.grandfather}
+          </p>
+          <p className={styles.inviteText}>
+            solicit your gracious presence on the auspicious occasion of wedding of their beloved granddaughter
+          </p>
+          <h2 className={styles.brideName}>{COUPLE.bride.name}</h2>
+          <p className={styles.parentInfo}>({COUPLE.bride.parents})</p>
+          <p className={styles.withText}>with</p>
+          <h2 className={styles.groomName}>{COUPLE.groom.name}</h2>
+          <p className={styles.parentInfo}>({COUPLE.groom.parents})</p>
         </div>
-
-        <div className={styles.coupleCenter}>
-          <div className={styles.ampersand}>&amp;</div>
-          <div className={styles.coupleImgWrap}>
-            <img
-              src="/assets/e7a0d4ee-e3b4-40cb-9390-6a2ce8e12f45.jpg"
-              alt="Sanya and Shobhit together"
-              className={styles.coupleImg}
-            />
-          </div>
-        </div>
-
-        <div className={styles.portraitCard}>
-          <div className={styles.portraitFrame}>
-            <img
-              src="/assets/8cf98440-c309-4a53-afce-775c6019bc88.jpg"
-              alt="Shobhit — The Groom"
-            />
-            <div className={styles.frameRing} />
-          </div>
-          <div className={styles.portraitLabel}>
-            <p className={styles.role}>The Groom</p>
-            <h3 className={styles.personName}>Shobhit</h3>
-            <p className={styles.family}>Garg Family</p>
-          </div>
-        </div>
-      </div>
-
-      <div className={styles.invitationText} ref={textRef}>
-        <div className={styles.quoteMark}>"</div>
-        <p className={styles.body}>
-          Together with their families, the{' '}
-          <strong>Aggarwal Family</strong> &amp; the{' '}
-          <strong>Garg Family</strong> joyfully invite you to share in their
-          happiness as they celebrate the marriage of their beloved children.
-        </p>
-        <p className={styles.note}>
-          Your presence would be the greatest blessing of all.
-        </p>
-        <div className={styles.florals}>❀ ❀ ❀</div>
+        <span className={styles.cornerOrnament + ' ' + styles.bl}></span>
+        <span className={styles.cornerOrnament + ' ' + styles.br}></span>
       </div>
     </section>
   );
 }
+
+export default Invitation;

@@ -1,238 +1,172 @@
 .section {
-  padding: 7rem 2rem;
-  background: linear-gradient(180deg, #fff8f4 0%, #fef0e8 100%);
-  text-align: center;
-}
-
-.sectionHeader {
-  margin-bottom: 4rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.sectionHeader.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.eyebrow {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #c9a96e;
-  margin-bottom: 0.8rem;
-}
-
-.sectionTitle {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(3rem, 7vw, 5.5rem);
-  color: #5c1a35;
-  margin: 0 0 1.2rem;
-  line-height: 1.1;
-}
-
-.divider {
+  padding: 64px 16px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  gap: 1rem;
-  max-width: 260px;
-  margin: 0 auto;
+  background: var(--ivory);
 }
 
-.line {
-  flex: 1;
-  height: 1px;
-  background: linear-gradient(to right, transparent, #c9a96e, transparent);
-}
-
-.ornament {
-  color: #c9a96e;
-  font-size: 0.7rem;
-}
-
-.portraits {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2.5rem;
-  flex-wrap: wrap;
-  margin-bottom: 4rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.9s ease 0.15s, transform 0.9s ease 0.15s;
-}
-
-.portraits.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.portraitCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.portraitFrame {
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--cream-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(92, 6, 18, 0.12), var(--shadow-gold);
   position: relative;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 3px solid #c9a96e;
-  box-shadow: 0 8px 40px rgba(139, 26, 74, 0.2), 0 0 0 6px rgba(201, 169, 110, 0.12);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.portraitFrame:hover {
-  transform: scale(1.04);
-  box-shadow: 0 16px 60px rgba(139, 26, 74, 0.35), 0 0 0 10px rgba(201, 169, 110, 0.2);
-}
-
-.portraitFrame img {
+.archTop {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
-}
-
-.portraitFrame:hover img {
-  transform: scale(1.08);
-}
-
-.frameRing {
-  position: absolute;
-  inset: -6px;
-  border-radius: 50%;
-  border: 1px solid rgba(201, 169, 110, 0.4);
-  pointer-events: none;
-}
-
-.portraitLabel {
-  text-align: center;
-}
-
-.role {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: #c9a96e;
-  margin-bottom: 0.3rem;
-}
-
-.personName {
-  font-family: 'Great Vibes', cursive;
-  font-size: 2.2rem;
-  color: #5c1a35;
-  margin: 0 0 0.2rem;
-}
-
-.family {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #9b7a6e;
-}
-
-.coupleCenter {
+  height: 76px;
+  background: var(--maroon);
+  border-radius: 48% 48% 50% 50% / 55% 55% 35% 35%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 12px;
+  position: relative;
 }
 
-.ampersand {
-  font-family: 'Great Vibes', cursive;
-  font-size: 4rem;
-  color: #c9a96e;
-  line-height: 1;
+.archTop::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
 }
 
-.coupleImgWrap {
-  width: 260px;
-  height: 320px;
-  border-radius: 120px 120px 120px 120px;
-  overflow: hidden;
-  border: 3px solid #c9a96e;
-  box-shadow: 0 12px 50px rgba(139, 26, 74, 0.25);
+.hangingMotifs {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-top: -4px;
+  padding: 0 16px;
 }
 
-.coupleImg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.6s ease;
+.motif {
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(180deg, var(--gold), transparent);
+  position: relative;
 }
 
-.coupleImgWrap:hover .coupleImg {
-  transform: scale(1.05);
-}
-
-.invitationText {
-  max-width: 700px;
-  margin: 0 auto;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.9s ease 0.25s, transform 0.9s ease 0.25s;
-}
-
-.invitationText.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.quoteMark {
-  font-family: 'Playfair Display', serif;
-  font-size: 6rem;
-  color: #c9a96e;
-  line-height: 0.6;
-  margin-bottom: 1rem;
-  opacity: 0.5;
+.motif::after {
+  content: '◆';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  color: var(--gold);
 }
 
 .body {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  line-height: 1.9;
-  color: #4a2030;
-  margin-bottom: 1.2rem;
+  padding: 32px 24px 40px;
+  text-align: center;
 }
 
-.body strong {
-  color: #8b1a4a;
+.ganeshaIcon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  color: var(--gold-dark);
+  margin-bottom: 12px;
+  filter: drop-shadow(0 2px 8px rgba(212, 175, 55, 0.3));
+}
+
+.mantra {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  color: var(--maroon);
   font-weight: 600;
+  margin-bottom: 12px;
 }
 
-.note {
-  font-family: 'Lato', sans-serif;
-  font-size: 0.85rem;
+.shloka {
+  font-family: 'Playfair Display', serif;
   font-style: italic;
-  color: #9b7a6e;
-  letter-spacing: 1px;
-  margin-bottom: 1.5rem;
+  font-size: 12px;
+  color: var(--text-body);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  opacity: 0.8;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.florals {
-  font-size: 1.2rem;
-  color: #c9a96e;
-  letter-spacing: 8px;
+.goldDivider {
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto;
 }
 
-@media (max-width: 900px) {
-  .coupleCenter {
-    order: -1;
-    width: 100%;
-  }
+.hosts {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+  color: var(--maroon);
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
 
-  .portraits {
-    flex-direction: column;
-  }
+.inviteText {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  color: var(--text-body);
+  line-height: 1.6;
+  margin-bottom: 20px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.brideName,
+.groomName {
+  font-family: 'Great Vibes', cursive;
+  font-size: 36px;
+  color: var(--maroon);
+  margin-bottom: 4px;
+}
+
+.parentInfo {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 12px;
+  color: var(--text-body);
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.withText {
+  font-family: 'Great Vibes', cursive;
+  font-size: 24px;
+  color: var(--gold-dark);
+  margin: 12px 0;
+}
+
+.cornerOrnament {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.3;
+}
+
+.cornerOrnament.bl {
+  bottom: 8px;
+  left: 8px;
+  border-bottom: 2px solid var(--gold);
+  border-left: 2px solid var(--gold);
+  border-bottom-left-radius: 8px;
+}
+
+.cornerOrnament.br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 2px solid var(--gold);
+  border-right: 2px solid var(--gold);
+  border-bottom-right-radius: 8px;
 }
