@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Lato:wght@300;400;700&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  background: #fff8f4;
+  color: #4a2030;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: inherit;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a0812;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c9a96e;
+  border-radius: 3px;
+}
+
+::selection {
+  background: rgba(201, 169, 110, 0.3);
+  color: #fff;
+}
