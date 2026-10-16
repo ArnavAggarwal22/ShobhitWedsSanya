@@ -1,5 +1,5 @@
 import React from 'react';
-import '../index.css';
+import '../../index.css';
 import './Hero.module.css';
 import { COUPLE } from '../../data/weddingData';
 

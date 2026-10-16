@@ -1,0 +1,35 @@
+/* Venue.module.css - Royal Palace theme */
+.venueSection {
+  background: rgba(26, 3, 16, 0.9); /* deep plum overlay */
+  color: #D4AF37; /* royal gold text */
+  padding: 4rem 2rem;
+  text-align: center;
+  border-top: 4px solid #FFD700; /* gold border */
+  border-bottom: 4px solid #FFD700;
+  margin: 2rem 0;
+}
+
+.heading {
+  font-family: 'Cinzel', serif;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: #FFD700;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.7);
+}
+
+.mapContainer {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  border: 3px solid #D4AF37;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+}
+
+.address {
+  font-family: 'Sansita', sans-serif;
+  font-size: 1.2rem;
+  color: #fff;
+  margin-top: 1rem;
+}

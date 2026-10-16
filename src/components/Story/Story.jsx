@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import '../index.css';
+import '../../index.css';
 import './Story.module.css';
 import { STORY_TIMELINE, COUPLE } from '../../data/weddingData';
 

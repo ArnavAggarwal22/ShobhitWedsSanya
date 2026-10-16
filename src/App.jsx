@@ -4,11 +4,11 @@ import Hero from './components/Hero/Hero';
 import Shloka from './components/Shloka/Shloka';
 import CountdownScratch from './components/CountdownScratch/CountdownScratch';
 import Story from './components/Story/Story';
-import Hosts from './components/Hosts/Hosts';
+import Hosts from './components/Hosts/Hosts.jsx';
 import Events from './components/Events/Events';
 import Gallery from './components/Gallery/Gallery';
 import RSVP from './components/RSVP/RSVP';
-import Venue from './components/Venue/Venue';
+import Venue from './components/Venue/Venue.jsx';
 import AudioToggle from './components/AudioToggle/AudioToggle';
 import './index.css';
 
