@@ -12,17 +12,17 @@
   top: -8vh;
   display: block;
   border-radius: 85% 12% 85% 12%;
-  background: linear-gradient(145deg, #fff2dc 0%, #e9a9a0 50%, #b94351 100%);
-  box-shadow: inset -1px -1px 2px rgba(92, 6, 18, 0.18), 0 1px 5px rgba(92, 6, 18, 0.12);
+  background: linear-gradient(145deg, #fffdf4 0%, #ead9b0 50%, #c2a05c 100%);
+  box-shadow: inset -1px -1px 2px rgba(110, 82, 34, 0.13), 0 1px 5px rgba(110, 82, 34, 0.1);
   will-change: transform, opacity;
 }
 
 .petal:nth-child(4n + 1) {
-  background: linear-gradient(145deg, #fff8ea 0%, #f0c1ae 55%, #d27a78 100%);
+  background: linear-gradient(145deg, #fffdf3 0%, #eedfbb 55%, #d1b36f 100%);
 }
 
 .petal:nth-child(4n + 2) {
-  background: linear-gradient(145deg, #fff5df 0%, #e5b2a0 55%, #a83f50 100%);
+  background: linear-gradient(145deg, #fffdf2 0%, #e8d6aa 55%, #b89247 100%);
 }
 
 .blossom {
@@ -32,11 +32,11 @@
   border-radius: 50%;
   background:
     radial-gradient(circle at 50% 18%, #fff5e4 0 19%, transparent 21%),
-    radial-gradient(circle at 80% 40%, #f3c9ad 0 19%, transparent 21%),
-    radial-gradient(circle at 68% 76%, #e8a6a0 0 19%, transparent 21%),
-    radial-gradient(circle at 32% 76%, #f5c8ac 0 19%, transparent 21%),
+    radial-gradient(circle at 80% 40%, #f5dfc7 0 19%, transparent 21%),
+    radial-gradient(circle at 68% 76%, #e8cb9f 0 19%, transparent 21%),
+    radial-gradient(circle at 32% 76%, #f2dfbd 0 19%, transparent 21%),
     radial-gradient(circle at 20% 40%, #fff0dc 0 19%, transparent 21%);
-  filter: drop-shadow(0 1px 3px rgba(92, 6, 18, 0.2));
+  filter: drop-shadow(0 1px 3px rgba(92, 6, 18, 0.16));
   will-change: transform, opacity;
 }
 
@@ -49,12 +49,6 @@
   border-radius: 50%;
   background: #d4af37;
   content: '';
-}
-
-@media (max-width: 600px) {
-  .petal:nth-child(3n) {
-    display: none;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {

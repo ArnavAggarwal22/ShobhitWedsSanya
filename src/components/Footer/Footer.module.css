@@ -1,10 +1,10 @@
 .footer {
   position: relative;
-  background: var(--maroon-deep);
+  background: linear-gradient(180deg, #faf7ef, #f3eddf);
   padding: 4rem 2rem 2rem;
   text-align: center;
   overflow: hidden;
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
+  border-top: 1px solid rgba(185, 151, 78, 0.35);
 }
 
 .topOrb {
@@ -14,7 +14,7 @@
   transform: translateX(-50%);
   width: min(400px, 90vw);
   height: 200px;
-  background: radial-gradient(ellipse, rgba(139, 26, 43, 0.2) 0%, transparent 70%);
+  background: radial-gradient(ellipse, rgba(185, 151, 78, 0.15) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -25,6 +25,14 @@
   gap: 1rem;
   max-width: 200px;
   margin: 0 auto 2rem;
+}
+
+.brandMark {
+  display: block;
+  width: min(100%, 300px);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin: 0 auto 16px;
 }
 
 .line {
@@ -41,8 +49,8 @@
 .names {
   font-family: 'Great Vibes', cursive;
   font-size: clamp(3.5rem, 8vw, 6rem);
-  color: var(--ivory);
-  text-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+  color: #4b3d24;
+  text-shadow: 0 0 30px rgba(185, 151, 78, 0.16);
   margin: 0 0 0.5rem;
 }
 
@@ -58,7 +66,7 @@
 .tagline {
   font-family: 'Playfair Display', serif;
   font-size: 0.95rem;
-  color: var(--ivory-dim);
+  color: #74694f;
   letter-spacing: 1px;
   margin-bottom: 0.5rem;
 }
@@ -100,6 +108,6 @@
   font-size: 0.72rem;
   font-weight: 300;
   letter-spacing: 2px;
-  color: rgba(255, 248, 240, 0.55);
+  color: rgba(63, 53, 37, 0.58);
   text-transform: uppercase;
 }

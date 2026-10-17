@@ -92,6 +92,14 @@ function Cover({ onOpen }) {
           animate={{ opacity: 0.7 }}
           transition={{ delay: prefersReducedMotion ? 0 : 4.1, duration: 0.7 }}
         >A celebration of love, family & forever</motion.span>
+        <motion.img
+          className={styles.brandLogo}
+          src="/assets/logo-transparent.png"
+          alt="Shobhit and Sanya floral monogram"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: prefersReducedMotion ? 0 : 3.6, duration: 0.8 }}
+        />
       </motion.div>
     </div>
   );

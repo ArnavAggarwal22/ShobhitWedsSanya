@@ -14,6 +14,7 @@ export default function Footer() {
         <span className={styles.ornament}>❀</span>
         <span className={styles.line} />
       </div>
+      <img className={styles.brandMark} src="/assets/logo-transparent.png" alt="Shobhit and Sanya floral monogram" />
       <h2 className={styles.names}>Sanya &amp; Shobhit</h2>
       <p className={styles.date}>25th &amp; 26th November 2026</p>
       <p className={styles.tagline}>We can't wait to celebrate with you!</p>

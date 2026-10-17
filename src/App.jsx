@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import Cover from './components/Cover/Cover';
-import Hero from './components/Hero/Hero';
+import Hero from './components/Hero/RoyalArrival';
 import Invitation from './components/Invitation/Invitation';
 import CountdownScratch from './components/CountdownScratch/CountdownScratch';
 import Events from './components/Events/Events';
@@ -10,7 +10,6 @@ import Venue from './components/Venue/Venue.jsx';
 import AudioToggle from './components/AudioToggle/AudioToggle';
 import Footer from './components/Footer/Footer';
 import PetalShower from './components/PetalShower/PetalShower';
-import Navbar from './components/Navbar/Navbar';
 import { motion } from 'motion/react';
 import './index.css';
 
@@ -29,7 +28,7 @@ function Reveal({ children, delay = 0 }) {
 
 function App() {
   const audioRef = useRef(null);
-  const [inviteOpened, setInviteOpened] = React.useState(false);
+  const [palaceEntered, setPalaceEntered] = React.useState(false);
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.5;
@@ -37,7 +36,7 @@ function App() {
   }, []);
 
   function handleOpenInvite() {
-    setInviteOpened(true);
+    setPalaceEntered(true);
     if (audioRef.current) {
       audioRef.current.play().catch(() => {});
     }
@@ -50,9 +49,8 @@ function App() {
       <PetalShower />
       <AudioToggle audioRef={audioRef} />
       <Cover onOpen={handleOpenInvite} />
-      {inviteOpened ? <Navbar /> : null}
       <div id="main-content">
-        <Hero />
+        <Hero entered={palaceEntered} />
         <Reveal><Invitation /></Reveal>
         <Reveal delay={0.06}><CountdownScratch /></Reveal>
         <Reveal><Events /></Reveal>

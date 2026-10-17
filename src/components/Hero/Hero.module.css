@@ -1,106 +1,248 @@
 .heroSection {
   position: relative;
-  width: 100%;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
-}
-
-.bgImage {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  z-index: 0;
+  min-height: 100svh;
+  padding: 34px 18px 42px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(230, 212, 171, 0.23), transparent 44%),
+    linear-gradient(180deg, #fffefa 0%, #faf7ef 100%);
 }
 
-.gradientOverlay {
+.heroSection::before,
+.heroSection::after {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(61, 0, 7, 0.7) 0%,
-    rgba(61, 0, 7, 0.4) 40%,
-    rgba(61, 0, 7, 0.5) 70%,
-    rgba(61, 0, 7, 0.85) 100%
-  );
-  z-index: 1;
+  inset: 18px;
+  border: 1px solid rgba(185, 151, 78, 0.22);
+  content: '';
+  pointer-events: none;
 }
 
-.content {
+.heroSection::after {
+  inset: 24px;
+  border-color: rgba(185, 151, 78, 0.1);
+}
+
+.topOrnament {
+  position: absolute;
+  top: 42px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: var(--gold-dark);
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+.topOrnament span:first-child,
+.topOrnament span:last-child {
+  color: #d2b46d;
+  font-size: 11px;
+}
+
+.heroInner {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  width: min(100%, 1040px);
+  margin: auto;
   text-align: center;
-  padding: 24px;
-  max-width: 100%;
 }
 
-.names {
-  font-family: 'Great Vibes', cursive;
-  font-size: clamp(48px, 12vw, 80px);
-  color: var(--gold-bright);
-  line-height: 1.15;
-  text-shadow: 0 4px 30px rgba(212, 175, 55, 0.4);
-  margin-bottom: 8px;
-}
-
-.ampersand {
+.brandLogo {
   display: block;
+  width: clamp(150px, 20vw, 230px);
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin: 0 auto -5px;
+}
+
+.eyebrow {
+  color: #8d7850;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.title {
+  margin-top: 7px;
+  color: #3e3526;
   font-family: 'Great Vibes', cursive;
-  font-size: clamp(32px, 8vw, 52px);
-  color: var(--gold);
-  margin: -4px 0;
+  font-size: clamp(42px, 7vw, 70px);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.title span {
+  color: var(--gold-dark);
+  font-family: 'Playfair Display', serif;
+  font-size: 0.52em;
+  font-style: italic;
+  vertical-align: 0.15em;
 }
 
 .subtitle {
-  font-family: 'Cinzel', serif;
-  font-size: clamp(12px, 3vw, 16px);
-  letter-spacing: 6px;
-  text-transform: uppercase;
-  color: var(--ivory);
-  margin-top: 16px;
-  opacity: 0.9;
+  margin-top: 9px;
+  color: #786a4d;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(13px, 2vw, 17px);
+  font-style: italic;
 }
 
-.dateLocation {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: clamp(13px, 3.2vw, 15px);
-  color: var(--ivory-dim);
-  margin-top: 20px;
-  letter-spacing: 2px;
-  opacity: 0.85;
+.scene {
+  width: min(100%, 930px);
+  margin: 20px auto 0;
+  overflow: hidden;
+  border: 1px solid rgba(185, 151, 78, 0.46);
+  border-radius: 2px;
+  background: #f8f5ec;
+  box-shadow: 0 23px 70px rgba(81, 62, 27, 0.12), 0 3px 12px rgba(81, 62, 27, 0.06);
+  touch-action: pan-y;
 }
 
-.divider {
-  width: 80px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 24px auto 0;
+.sceneParallax {
+  width: 100%;
+  transform-origin: 50% 65%;
 }
 
-.scrollHint {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 2;
+.palace {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1000 / 620;
+}
+
+.window {
+  stroke: #b39454;
+  stroke-width: 1.4;
+  filter: drop-shadow(0 0 5px rgba(250, 207, 104, 0.7));
+}
+
+.sceneLit .palace {
+  filter: saturate(1.08);
+}
+
+.heroFooter {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 8px;
-  animation: float 2s ease-in-out infinite;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin-top: 18px;
 }
 
-.scrollArrow {
-  width: 24px;
-  height: 24px;
-  border-right: 2px solid var(--gold);
-  border-bottom: 2px solid var(--gold);
-  transform: rotate(45deg);
-  opacity: 0.6;
+.heroFooter p {
+  color: #655a45;
+  font-family: 'Cinzel', serif;
+  font-size: 11px;
+  letter-spacing: 1.1px;
+}
+
+.heroFooter p span {
+  padding: 0 5px;
+  color: var(--gold-dark);
+}
+
+.lightButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid rgba(155, 120, 49, 0.55);
+  border-radius: 2px;
+  background: rgba(255, 254, 250, 0.74);
+  color: #6c5428;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.lightButton:hover,
+.sceneLit + .heroFooter .lightButton {
+  background: #f3e7c7;
+  box-shadow: 0 0 24px rgba(185, 151, 78, 0.18);
+  transform: translateY(-1px);
+}
+
+.lampIcon {
+  color: #bd913c;
+  font-size: 13px;
+}
+
+.sceneCaption {
+  margin-top: 8px;
+  color: #94866b;
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-style: italic;
+}
+
+@media (max-height: 760px) and (min-width: 720px) {
+  .heroSection {
+    padding-top: 22px;
+    padding-bottom: 24px;
+  }
+
+  .topOrnament {
+    top: 26px;
+  }
+
+  .brandLogo {
+    width: 150px;
+  }
+
+  .scene {
+    width: min(100%, 790px);
+    margin-top: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .heroSection {
+    min-height: 100svh;
+    padding: 62px 14px 32px;
+  }
+
+  .heroSection::before {
+    inset: 8px;
+  }
+
+  .heroSection::after {
+    inset: 14px;
+  }
+
+  .topOrnament {
+    top: 24px;
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .brandLogo {
+    width: clamp(140px, 45vw, 190px);
+  }
+
+  .scene {
+    margin-top: 16px;
+    border-radius: 2px;
+  }
+
+  .heroFooter {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightButton {
+    transition: none;
+  }
 }

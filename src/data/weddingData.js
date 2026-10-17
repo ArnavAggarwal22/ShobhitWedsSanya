@@ -86,4 +86,4 @@ export const GALLERY_IMAGES = [
   { src: '/assets/WhatsApp Image 2026-10-16 at 6.55.16 PM.jpeg', alt: 'Together 10' },
 ];
 
-export const MAP_EMBED_URL = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3507.6!2d77.0600!3d28.4600!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d19427e000001%3A0xd5c4f8e7c2b!2sCrowne%20Plaza%20Gurugram!5e0!3m2!1sen!2sin!4v1700000000000';
+export const MAP_EMBED_URL = 'https://www.openstreetmap.org/export/embed.html?bbox=77.0540%2C28.4630%2C77.0665%2C28.4735&layer=mapnik&marker=28.4684176%2C77.0598111';
