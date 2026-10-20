@@ -1,86 +1,25 @@
 import React, { useState } from 'react';
-import { AnimatePresence, motion } from 'motion/react';
-import { EVENTS, VENUE_MAP_URL } from '../../data/weddingData';
+import { motion } from 'motion/react';
+import { EVENTS } from '../../data/weddingData';
 import styles from './Events.module.css';
 
 function Events() {
   const [activeDay, setActiveDay] = useState('all');
-  const [expandedEvent, setExpandedEvent] = useState('sangeet');
   const dayOptions = [
     { id: 'all', label: 'All celebrations', shortLabel: 'All' },
     { id: '25', label: 'Wednesday · 25 November', shortLabel: 'Day one' },
     { id: '26', label: 'Thursday · 26 November', shortLabel: 'Day two' },
   ];
-  const visibleEvents = [];
+  const dateGroups = [
+    { id: '25', weekday: 'Wednesday', date: '25', events: [] },
+    { id: '26', weekday: 'Thursday', date: '26', events: [] },
+  ];
 
-  for (let i = 0; i < EVENTS.length; i++) {
-    const event = EVENTS[i];
+  for (const event of EVENTS) {
     const eventDay = event.id === 'myra' || event.id === 'sangeet' ? '25' : '26';
     if (activeDay === 'all' || activeDay === eventDay) {
-      visibleEvents.push({ event, eventDay, originalIndex: i });
+      dateGroups.find((group) => group.id === eventDay).events.push(event);
     }
-  }
-
-  const cards = [];
-  for (let i = 0; i < visibleEvents.length; i++) {
-    const { event: evt, eventDay, originalIndex } = visibleEvents[i];
-    const isExpanded = expandedEvent === evt.id;
-    cards.push(
-      <motion.article
-        key={evt.id}
-        className={`${styles.eventCard} ${styles[evt.id]} ${isExpanded ? styles.expanded : ''}`}
-        layout
-        transition={{ layout: { duration: 0.38, ease: [0.22, 1, 0.36, 1] } }}
-      >
-        <button
-          className={styles.eventTrigger}
-          type="button"
-          onClick={() => setExpandedEvent(isExpanded ? '' : evt.id)}
-          aria-expanded={isExpanded}
-          aria-controls={`event-details-${evt.id}`}
-        >
-          <span className={styles.eventNumber}>{String(originalIndex + 1).padStart(2, '0')}</span>
-          <span className={styles.eventDate}>
-            <span>{eventDay === '25' ? 'WEDNESDAY' : 'THURSDAY'}</span>
-            {eventDay} <small>NOV</small>
-          </span>
-          <span className={styles.eventMain}>
-            <span className={styles.eventName}>{evt.name}</span>
-            <span className={styles.eventSubtitle}>{evt.subtitle}</span>
-          </span>
-          <span className={styles.eventTime}>{evt.time}</span>
-          <span className={`${styles.expandIcon} ${isExpanded ? styles.expandIconOpen : ''}`} aria-hidden="true">+</span>
-        </button>
-
-        <AnimatePresence initial={false}>
-          {isExpanded ? (
-            <motion.div
-              id={`event-details-${evt.id}`}
-              className={styles.eventDetails}
-              role="region"
-              aria-label={`${evt.name} event details`}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.32, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <div className={styles.detailsInner}>
-                <div className={styles.detailsMeta}>
-                  <span><b>VENUE</b>{evt.venue}</span>
-                  {evt.dressCode ? <span><b>DRESS CODE</b>{evt.dressCode.replace('Dress Code: ', '')}</span> : null}
-                </div>
-                <a className={styles.mapLink} href={VENUE_MAP_URL} target="_blank" rel="noopener noreferrer">
-                  <span aria-hidden="true">↗</span> Get directions
-                </a>
-                <a className={`${styles.mapLink} ${styles.blessingLink}`} href="#rsvp">
-                  <span aria-hidden="true">✦</span> Send a blessing
-                </a>
-              </div>
-            </motion.div>
-          ) : null}
-        </AnimatePresence>
-      </motion.article>
-    );
   }
 
   const dayTabs = [];
@@ -97,9 +36,6 @@ function Events() {
         aria-controls="events-list"
         onClick={() => {
           setActiveDay(option.id);
-          if (option.id === '25') setExpandedEvent('myra');
-          else if (option.id === '26') setExpandedEvent('haldi');
-          else setExpandedEvent('sangeet');
         }}
       >
         <span className={styles.dayTabLong}>{option.label}</span>
@@ -127,7 +63,29 @@ function Events() {
           aria-labelledby={`day-tab-${activeDay}`}
           layout
         >
-          {cards}
+          {dateGroups.filter((group) => group.events.length > 0).map((group) => (
+            <motion.section className={styles.dateGroup} key={group.id} layout>
+              <div className={styles.dateHeading}>
+                <span>{group.weekday}</span>
+                <strong>{group.date}</strong>
+                <span>November 2026</span>
+              </div>
+              <div className={styles.eventList}>
+                {group.events.map((event) => (
+                  <article className={`${styles.eventRow} ${styles[event.id]}`} key={event.id}>
+                    <span className={styles.eventTime}>{event.time}</span>
+                    <div className={styles.eventInfo}>
+                      <h3 className={styles.eventName}>{event.name}</h3>
+                      <p className={styles.eventSubtitle}>{event.subtitle}</p>
+                    </div>
+                    {event.dressCode ? (
+                      <span className={styles.dressCode}>{event.dressCode.replace('Dress Code: ', '')}</span>
+                    ) : null}
+                  </article>
+                ))}
+              </div>
+            </motion.section>
+          ))}
         </motion.div>
       </div>
       <p className={styles.venueNote}><span aria-hidden="true">✦</span> All celebrations take place at Crowne Plaza, Sector 29, Gurugram</p>

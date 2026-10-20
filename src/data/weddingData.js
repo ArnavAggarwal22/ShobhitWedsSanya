@@ -86,4 +86,4 @@ export const GALLERY_IMAGES = [
   { src: '/assets/WhatsApp Image 2026-10-16 at 6.55.16 PM.jpeg', alt: 'Together 10' },
 ];
 
-export const MAP_EMBED_URL = 'https://www.openstreetmap.org/export/embed.html?bbox=77.0540%2C28.4630%2C77.0665%2C28.4735&layer=mapnik&marker=28.4684176%2C77.0598111';
+export const MAP_EMBED_URL = 'https://maps.google.com/maps?q=Crowne%20Plaza%20Sector%2029%20Gurugram&output=embed';

@@ -31,21 +31,22 @@ function App() {
   const [palaceEntered, setPalaceEntered] = React.useState(false);
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.volume = 0.5;
+      audioRef.current.volume = 0.38;
     }
   }, []);
 
   function handleOpenInvite() {
     setPalaceEntered(true);
     if (audioRef.current) {
-      audioRef.current.play().catch(() => {});
+      audioRef.current.play().catch((error) => {
+        console.error('Unable to start wedding music:', error);
+      });
     }
-    document.getElementById('main-content')?.scrollIntoView({ behavior: 'smooth' });
   }
 
   return (
     <>
-      <audio ref={audioRef} loop src="/assets/wedding_music.mp3" />
+      <audio ref={audioRef} loop preload="none" src="/assets/wedding-song.mp3" />
       <PetalShower />
       <AudioToggle audioRef={audioRef} />
       <Cover onOpen={handleOpenInvite} />

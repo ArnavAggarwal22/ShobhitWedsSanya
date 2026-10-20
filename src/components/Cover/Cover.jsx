@@ -5,6 +5,7 @@ import styles from './Cover.module.css';
 
 function Cover({ onOpen }) {
   const [isHidden, setIsHidden] = useState(false);
+  const [isDismissed, setIsDismissed] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const [isReady, setIsReady] = useState(prefersReducedMotion);
 
@@ -20,6 +21,8 @@ function Cover({ onOpen }) {
       onOpen();
     }
   }
+
+  if (isDismissed) return null;
 
   const particleElements = [];
   for (let i = 0; i < 12; i++) {
@@ -44,6 +47,9 @@ function Cover({ onOpen }) {
         initial={{ opacity: 0, y: 30, scale: 0.92 }}
         animate={{ opacity: isHidden ? 0 : 1, y: isHidden ? -32 : 0, scale: isHidden ? 0.94 : 1, rotateX: isHidden ? 12 : 0 }}
         transition={{ duration: prefersReducedMotion ? 0 : 0.85, ease: [0.22, 1, 0.36, 1] }}
+        onAnimationComplete={() => {
+          if (isHidden) setIsDismissed(true);
+        }}
       >
         <span className={styles.cornerDecor + ' ' + styles.topLeft}></span>
         <span className={styles.cornerDecor + ' ' + styles.topRight}></span>
@@ -83,7 +89,8 @@ function Cover({ onOpen }) {
           whileHover={{ scale: 1.06, boxShadow: '0 0 34px rgba(232, 197, 71, 0.62)' }}
           whileTap={{ scale: 0.97 }}
         >
-          <span>Open Invitation</span>
+          <span className={styles.openFlourish} aria-hidden="true">✧</span>
+          <span>View the Invitation</span>
           <span className={styles.openArrow} aria-hidden="true">↗</span>
         </motion.button>
         <motion.span

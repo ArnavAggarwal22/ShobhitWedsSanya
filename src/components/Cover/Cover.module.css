@@ -97,30 +97,47 @@
 }
 
 .openBtn {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-  min-width: 230px;
-  min-height: 52px;
-  padding: 14px 24px;
-  background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-bright));
-  color: var(--maroon-deep);
+  gap: 12px;
+  min-width: 254px;
+  min-height: 58px;
+  padding: 12px 20px;
+  border: 1px solid rgba(232, 197, 117, 0.88);
+  border-radius: 999px;
+  background: linear-gradient(135deg, #4a1020 0%, #6e1b2b 52%, #45101e 100%);
+  color: #fff8e8;
   font-family: 'Cinzel', serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.7px;
   text-transform: uppercase;
-  border: none;
-  border-radius: 3px;
   cursor: pointer;
-  box-shadow: 0 7px 24px rgba(212, 175, 55, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.4);
-  animation: invitationGlow 2.8s ease-in-out 4s infinite;
+  box-shadow: 0 8px 24px rgba(78, 22, 32, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease;
 }
 
-@keyframes invitationGlow {
-  0%, 100% { box-shadow: 0 7px 24px rgba(212, 175, 55, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
-  50% { box-shadow: 0 7px 34px rgba(232, 197, 71, 0.46), inset 0 1px 0 rgba(255, 255, 255, 0.4); }
+.openBtn::before {
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(232, 197, 117, 0.3);
+  border-radius: inherit;
+  content: '';
+  pointer-events: none;
+}
+
+.openBtn:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, #5a1425 0%, #7c2334 52%, #521323 100%);
+  box-shadow: 0 12px 30px rgba(78, 22, 32, 0.3), 0 0 26px rgba(212, 175, 55, 0.2);
+}
+
+.openFlourish {
+  color: #e6c673;
+  font-size: 17px;
+  line-height: 1;
 }
 
 .openBtn:focus-visible {
@@ -134,13 +151,20 @@
 }
 
 .openArrow {
-  font-size: 18px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(232, 197, 117, 0.45);
+  border-radius: 50%;
+  color: #e6c673;
+  font-size: 14px;
   line-height: 1;
   transition: transform 200ms ease;
 }
 
 .openBtn:hover .openArrow {
-  transform: translate(2px, -2px);
+  transform: translate(2px, -2px) rotate(4deg);
 }
 
 .tapHint {
